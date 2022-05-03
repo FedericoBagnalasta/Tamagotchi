@@ -39,6 +39,8 @@ public class Main {
 			System.out.println(tamagotchi.toString());
 		}while(scelta!=0);
 	}
+	
+	//bagna puzza
 
 	private static Tamagotchi creaTamagotchi() {
 		String nome=InputDati.leggiStringaNonVuota(RICHIESTA_NOME);
