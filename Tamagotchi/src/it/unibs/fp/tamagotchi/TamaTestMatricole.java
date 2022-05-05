@@ -98,4 +98,6 @@ public class TamaTestMatricole
 			tama.riceviCarezze(10);
 			assertTrue(tama.sonoTriste());
 		}
+		
+		
 	}

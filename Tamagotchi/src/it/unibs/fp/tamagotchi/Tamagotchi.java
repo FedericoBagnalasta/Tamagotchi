@@ -2,6 +2,8 @@ package it.unibs.fp.tamagotchi;
 import it.unibs.fp.mylib.EstrazioniCasuali;
 
 public class Tamagotchi {
+	private static final String NUMERO_DI_CAREZZE_DATE = "\nIl numero di carezze date al Tamagotchi e': %d\n";
+	private static final String NUMERO_DI_BISCOTTI_DATI = "\nIl numero di biscotti dati al Tamagotchi e': %d\n";
 	private static final int MAX_CAREZZE = 20;
 	private static final int MIN_CAREZZE = 0;
 	private static final int MAX_BISCOTTI = 20;
@@ -26,8 +28,8 @@ public class Tamagotchi {
 	private static final String SAZIETA = "\nSazietà:";
 	private static final String NOME = "\nNome:";
 	private String nome;
-	private double sazieta;
-	private double soddisfazione;
+	private double gradoSazieta;
+	private double gradoAffettivo;
 	
 	/**
 	 * Costruttore della classe Tamagotchi
@@ -37,8 +39,8 @@ public class Tamagotchi {
 	 */
 	public Tamagotchi(String nome, int sazieta, int soddisfazione) {
 		this.nome = nome;
-		this.sazieta = sazieta;
-		this.soddisfazione = soddisfazione;
+		this.gradoSazieta = sazieta;
+		this.gradoAffettivo = soddisfazione;
 	}
 	
 	/**
@@ -47,9 +49,9 @@ public class Tamagotchi {
 	 */
 	public void riceviBiscotti(int numBiscotti){
 		for(int i = 0; i < numBiscotti; i++) {
-			sazieta=Math.min(MAX_SAZIETA, sazieta+sazieta*FATTORE_AUMENTO_SAZIETA);
+			gradoSazieta=Math.min(MAX_SAZIETA, gradoSazieta+gradoSazieta*FATTORE_AUMENTO_SAZIETA);
 		}
-		soddisfazione=Math.max(MIN_SODDISFAZIONE, soddisfazione-numBiscotti/FATTORE_DECREMENTO_SODDISFAZIONE);
+		gradoAffettivo=Math.max(MIN_SODDISFAZIONE, gradoAffettivo-numBiscotti/FATTORE_DECREMENTO_SODDISFAZIONE);
 	}
 	
 	/**
@@ -57,8 +59,8 @@ public class Tamagotchi {
 	 * @param numCarezze
 	 */
 	public void riceviCarezze(int numCarezze) {
-		soddisfazione=Math.min(MAX_SODDISFAZIONE, soddisfazione+numCarezze);
-		sazieta=Math.max(MIN_SAZIETA, sazieta-numCarezze/FATTORE_DECREMENTO_SAZIETA);
+		gradoAffettivo=Math.min(MAX_SODDISFAZIONE, gradoAffettivo+numCarezze);
+		gradoSazieta=Math.max(MIN_SAZIETA, gradoSazieta-numCarezze/FATTORE_DECREMENTO_SAZIETA);
 	}
 	
 	/**
@@ -67,10 +69,10 @@ public class Tamagotchi {
 	public void riceviBiscotti(){
 		int numBiscotti = EstrazioniCasuali.estraiIntero(MIN_BISCOTTI, MAX_BISCOTTI);
 		for(int i = 0; i < numBiscotti; i++) {
-			sazieta=Math.min(MAX_SAZIETA, sazieta+sazieta*FATTORE_AUMENTO_SAZIETA);
+			gradoSazieta=Math.min(MAX_SAZIETA, gradoSazieta+gradoSazieta*FATTORE_AUMENTO_SAZIETA);
 		}
-		soddisfazione=Math.max(MIN_SODDISFAZIONE, soddisfazione-numBiscotti/FATTORE_DECREMENTO_SODDISFAZIONE);
-		System.out.printf("Il numero di biscotti dati al Tamagotchi e': %d\n", numBiscotti);
+		gradoAffettivo=Math.max(MIN_SODDISFAZIONE, gradoAffettivo-numBiscotti/FATTORE_DECREMENTO_SODDISFAZIONE);
+		System.out.printf(NUMERO_DI_BISCOTTI_DATI, numBiscotti);
 	}
 
 	/**
@@ -78,24 +80,24 @@ public class Tamagotchi {
 	 */
 	public void riceviCarezze() {
 		int numCarezze = EstrazioniCasuali.estraiIntero(MIN_CAREZZE, MAX_CAREZZE);
-		soddisfazione=Math.min(MAX_SODDISFAZIONE, soddisfazione+numCarezze);
-		sazieta=Math.max(MIN_SAZIETA, sazieta-numCarezze/FATTORE_DECREMENTO_SAZIETA);
-		System.out.printf("Il numero di carezze date al Tamagotchi e': %d\n", numCarezze);
+		gradoAffettivo=Math.min(MAX_SODDISFAZIONE, gradoAffettivo+numCarezze);
+		gradoSazieta=Math.max(MIN_SAZIETA, gradoSazieta-numCarezze/FATTORE_DECREMENTO_SAZIETA);
+		System.out.printf(NUMERO_DI_CAREZZE_DATE, numCarezze);
 	}
 	
 	/**
 	 * Metodo per verificare la morte di un Tamagotchi
 	 */
 	public boolean sonoMorto() {
-		return sazieta == MORTE_MAX_SAZIETA || sazieta == MORTE_MIN_SAZIETA || soddisfazione == MORTE_MIN_SODDISFAZIONE;
+		return gradoSazieta == MORTE_MAX_SAZIETA || gradoSazieta == MORTE_MIN_SAZIETA || gradoAffettivo == MORTE_MIN_SODDISFAZIONE;
 	}
 	
 	public double getSazieta() {
-		return sazieta;
+		return gradoSazieta;
 	}
 
 	public double getSoddisfazione() {
-		return soddisfazione;
+		return gradoAffettivo;
 	}
 	
 	/**
@@ -103,7 +105,7 @@ public class Tamagotchi {
 	 * @return
 	 */
 	public boolean sonoTriste() {
-		return(soddisfazione<TRISTEZZA_MIN_SODDISFAZIONE || sazieta<TRISTEZZA_MIN_SAZIETA || sazieta>TRISTEZZA_MAX_SAZIETA);
+		return(gradoAffettivo<TRISTEZZA_MIN_SODDISFAZIONE || gradoSazieta<TRISTEZZA_MIN_SAZIETA || gradoSazieta>TRISTEZZA_MAX_SAZIETA);
 	}
 	
 	/**
@@ -111,14 +113,13 @@ public class Tamagotchi {
 	 */
 	public String toString() {
 	StringBuffer descrizione=new StringBuffer();
-			sazieta = (double) (Math.round(sazieta*100.0)/100.0);
-			soddisfazione = (double) (Math.round(soddisfazione*100.0)/100.0);
+			gradoSazieta = (double) (Math.round(gradoSazieta*100.0)/100.0);
+			gradoAffettivo = (double) (Math.round(gradoAffettivo*100.0)/100.0);
 			descrizione.append(NOME+nome);
-			descrizione.append(SAZIETA+sazieta);
-			descrizione.append(SODDISFAZIONE+soddisfazione);
+			descrizione.append(SAZIETA+gradoSazieta);
+			descrizione.append(SODDISFAZIONE+gradoAffettivo);
 			if(sonoTriste()) descrizione.append(TRISTE);
 			if(sonoMorto()) descrizione.append(MORTO);
 			return descrizione.toString();		
 	}
 }
-//qualsiasi
