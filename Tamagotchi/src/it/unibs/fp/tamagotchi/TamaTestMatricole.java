@@ -66,7 +66,6 @@ public class TamaTestMatricole
 			assertTrue(tama.sonoTriste());
 		}
 		
-		//Modificato assertTrue con assertFalse
 		@Test
 		public void petIsUnhappyDueToExtremeRepletion() throws Exception 
 		{
@@ -90,7 +89,6 @@ public class TamaTestMatricole
 			assertTrue(res);
 		}
 		
-		//Modificato assertFalse con assertTrue
 		@Test
 		public void petAugmentsItsSatisfactionDueToCaresses() throws Exception 
 		{
