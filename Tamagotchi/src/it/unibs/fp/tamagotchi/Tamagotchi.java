@@ -118,8 +118,7 @@ public class Tamagotchi {
 			descrizione.append(SODDISFAZIONE+soddisfazione);
 			if(sonoTriste()) descrizione.append(TRISTE);
 			if(sonoMorto()) descrizione.append(MORTO);
-			return descrizione.toString();
-			
+			return descrizione.toString();		
 	}
-
 }
+//qualsiasi
