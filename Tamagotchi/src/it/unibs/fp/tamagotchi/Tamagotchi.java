@@ -52,7 +52,7 @@ public class Tamagotchi {
 		return sazieta;
 	}
 
-	public double getSoddisfazione () {
+	public double getSoddisfazione() {
 		return soddisfazione;
 	}
 	
