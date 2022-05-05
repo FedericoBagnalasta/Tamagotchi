@@ -34,13 +34,13 @@ public class Tamagotchi {
 	/**
 	 * Costruttore della classe Tamagotchi
 	 * @param nome
-	 * @param sazieta
-	 * @param soddisfazione
+	 * @param gradoAffetivo
+	 * @param gradoSazieta
 	 */
-	public Tamagotchi(String nome, int soddisfazione, int sazieta) {
+	public Tamagotchi(String nome, int gradoAffetivo, int gradoSazieta) {
 		this.nome = nome;
-		this.gradoSazieta = sazieta;
-		this.gradoAffettivo = soddisfazione;
+		this.gradoAffettivo = gradoAffetivo;
+		this.gradoSazieta = gradoSazieta;
 	}
 	
 	/**
