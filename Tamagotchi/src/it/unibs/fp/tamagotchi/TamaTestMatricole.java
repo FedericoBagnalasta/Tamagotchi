@@ -71,7 +71,7 @@ public class TamaTestMatricole
 		public void petIsUnhappyDueToExtremeRepletion() throws Exception 
 		{
 			final Tamagotchi tama = new Tamagotchi("Kira", 50, 95);
-			assertFalse(tama.sonoTriste());
+			assertTrue(tama.sonoTriste());
 		}
 		
 		@Test
@@ -96,7 +96,7 @@ public class TamaTestMatricole
 		{
 			final Tamagotchi tama = new Tamagotchi("Kira", 29, 50);
 			tama.riceviCarezze(10);
-			assertTrue(tama.sonoTriste());
+			assertFalse(tama.sonoTriste());
 		}
 		
 		

@@ -37,7 +37,7 @@ public class Tamagotchi {
 	 * @param sazieta
 	 * @param soddisfazione
 	 */
-	public Tamagotchi(String nome, int sazieta, int soddisfazione) {
+	public Tamagotchi(String nome, int soddisfazione, int sazieta) {
 		this.nome = nome;
 		this.gradoSazieta = sazieta;
 		this.gradoAffettivo = soddisfazione;
@@ -116,8 +116,8 @@ public class Tamagotchi {
 			gradoSazieta = (double) (Math.round(gradoSazieta*100.0)/100.0);
 			gradoAffettivo = (double) (Math.round(gradoAffettivo*100.0)/100.0);
 			descrizione.append(NOME+nome);
-			descrizione.append(SAZIETA+gradoSazieta);
 			descrizione.append(SODDISFAZIONE+gradoAffettivo);
+			descrizione.append(SAZIETA+gradoSazieta);
 			if(sonoTriste()) descrizione.append(TRISTE);
 			if(sonoMorto()) descrizione.append(MORTO);
 			return descrizione.toString();		

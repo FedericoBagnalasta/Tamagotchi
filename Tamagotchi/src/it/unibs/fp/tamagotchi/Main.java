@@ -46,10 +46,10 @@ public class Main {
 	 */
 	private static Tamagotchi creaTamagotchi() {
 		String nome=InputDati.leggiStringaNonVuota(RICHIESTA_NOME);
-		int sazieta=InputDati.leggiIntero(RICHIESTA_SAZIETA, MIN_SAZIETA_INIZIALE, MAX_SAZIETA_INIZIALE);
 		int soddisfazione=InputDati.leggiIntero(RICHIESTA_SODDISFAZIONE, MIN_SODDISFAZIONE_INIZIALE, MAX_SODDISFAZIONE_INIZIALE);
+		int sazieta=InputDati.leggiIntero(RICHIESTA_SAZIETA, MIN_SAZIETA_INIZIALE, MAX_SAZIETA_INIZIALE);
 		
-		Tamagotchi tamagotchi=new Tamagotchi(nome, sazieta, soddisfazione);
+		Tamagotchi tamagotchi=new Tamagotchi(nome, soddisfazione, sazieta);
 		return tamagotchi;
 	}
 
