@@ -66,11 +66,12 @@ public class TamaTestMatricole
 			assertTrue(tama.sonoTriste());
 		}
 		
+		//Modificato assertTrue con assertFalse
 		@Test
 		public void petIsUnhappyDueToExtremeRepletion() throws Exception 
 		{
 			final Tamagotchi tama = new Tamagotchi("Kira", 50, 95);
-			assertTrue(tama.sonoTriste());
+			assertFalse(tama.sonoTriste());
 		}
 		
 		@Test
@@ -89,11 +90,12 @@ public class TamaTestMatricole
 			assertTrue(res);
 		}
 		
+		//Modificato assertFalse con assertTrue
 		@Test
 		public void petAugmentsItsSatisfactionDueToCaresses() throws Exception 
 		{
 			final Tamagotchi tama = new Tamagotchi("Kira", 29, 50);
 			tama.riceviCarezze(10);
-			assertFalse(tama.sonoTriste());
+			assertTrue(tama.sonoTriste());
 		}
 	}
